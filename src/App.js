@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Route } from "react-router-dom";
+import coinDetail from "./pages/coinDetail";
+import coinSummary from "./pages/coinSummary";
+import Header from "./components/Header";
+import { WatchListContextProvider } from "./context/watchListContext";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <WatchListContextProvider>
+        <BrowserRouter>
+          <Header />
+          <Route exact path="/" component={coinSummary} />
+          <Route path="/coins/:id" component={coinDetail} />
+        </BrowserRouter>
+      </WatchListContextProvider>
     </div>
   );
-}
+};
 
 export default App;
