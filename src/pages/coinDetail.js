@@ -58,7 +58,7 @@ const coinDetail = () => {
       setIsLoading(false);
     };
     fetchData();
-  }, []);
+  }, [id]);
 
   const renderData = () => {
     if (isLoading) {
