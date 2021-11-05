@@ -27,7 +27,7 @@ const HistoryChart = ({ data }) => {
         data: {
           datasets: [
             {
-              label: `price`,
+              label: `가격`,
               data: determineTimeFormat(),
               backgroundColor: "rgba(174,385,194,0.5)",
               borderColor: "rgba(174,305,194,0.4)",
@@ -44,7 +44,7 @@ const HistoryChart = ({ data }) => {
     if (detail) {
       return (
         <>
-          <p className="my-0">${detail.current_price.toFixed(2)}</p>
+          <p className="my-0">{detail.current_price}원</p>
           <p
             className={
               detail.price_change_24h < 0
@@ -60,7 +60,7 @@ const HistoryChart = ({ data }) => {
   };
 
   return (
-    <div className="bg-white border mt-2 rounded p-3">
+    <div className="border mt-2 rounded p-3">
       <div>{renderPrice()}</div>
       <div>
         <canvas ref={chartRef} id="myChart" width={250} height={250} />
