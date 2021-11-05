@@ -1,14 +1,17 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import CoinData from "../components/CoinData";
 import HistoryChart from "../components/HistoryChart";
 import coinGecko from "../apis/coinGecko";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 
 const coinDetail = () => {
   const { id } = useParams();
   const [coinData, setCoinData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+
+  const history = useHistory();
 
   const formatData = (data) => {
     return data.map((el) => {
@@ -72,7 +75,16 @@ const coinDetail = () => {
     );
   };
 
-  return renderData();
+  return (
+    <>
+      <BsFillArrowLeftCircleFill
+        onClick={() => history.goBack()}
+        style={{ fontSize: "32px" }}
+        type="button"
+      />
+      {renderData()}
+    </>
+  );
 };
 
 export default coinDetail;
